@@ -1,0 +1,41 @@
+###
+@baseurl=http://localhost:4004/odata/v4/AdminService
+
+### get call
+GET {{baseurl}}/Books
+
+###
+GET {{baseurl}}/Authors
+
+###
+GET {{baseurl}}/Books?$expand=author
+
+###
+GET {{baseurl}}/Authors?$expand=book
+
+###
+POST {{baseurl}}/Authors
+Content-Type: application/json
+
+{
+    "ID": 4,
+    "name": "William Gibson"
+}
+
+###
+PUT {{baseurl}}/Books(3)
+Content-Type: application/json
+
+{
+      "title": "BookABCD24"
+      "author_ID": 3,
+      "stock": 40
+}
+###
+
+PATCH {{baseurl}}/Books(3)
+Content-Type: application/json
+
+{
+    "stock": 100
+}
