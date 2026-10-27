@@ -1,9 +1,10 @@
 {
   "name": "cap4",
   "version": "1.0.0",
-  "type": "module",
+  "type": ".js",
   "dependencies": {
-    "@sap/cds": "^10"
+    "@sap/cds": "^10",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^3"
@@ -11,5 +12,20 @@
   "scripts": {
     "start": "cds-serve"
   },
-  "private": true
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "db": {
+        "[development]": {
+          "kind": "sqlite",
+          "credential": {
+            "url": "db.sqlite"
+          }
+        }
+      }
+    }
+  }
 }

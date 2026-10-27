@@ -1,5 +1,7 @@
 ###
 @baseurl=http://localhost:4004/odata/v4/AdminService
+###
+{{baseurl}}/$metadata
 
 ### get call
 GET {{baseurl}}/Books
