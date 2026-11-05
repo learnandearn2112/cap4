@@ -1,10 +1,15 @@
 ###
-@baseurl=http://localhost:4004/odata/v4/AdminService
+@baseurl=http://localhost:4004/odata/v4/MyService
+
 ###
 {{baseurl}}/$metadata
 
 ### get call
 GET {{baseurl}}/Books
+Accept-Language: de
+
+###
+GET {{baseurl}}/Books?sap-locale=de
 
 ###
 GET {{baseurl}}/Authors
@@ -14,23 +19,37 @@ GET {{baseurl}}/Books?$expand=author
 
 ###
 GET {{baseurl}}/Authors?$expand=book
+###
+GET {{baseurl}}/Books
+//Accept-Language: de
 
+###
+POST {{baseurl}}/Books
+Content-Type: application/json
+
+{
+      "ID": 8,
+      "title": "BookMahabhrath13",
+      "author_ID": 4,
+      "stock": 10
+}
 ###
 POST {{baseurl}}/Authors
 Content-Type: application/json
 
 {
-    "ID": 4,
-    "name": "William Gibson"
+    "ID": 5,
+    "name": "Betu",
+    "dob": "2023-10-01"
 }
 
 ###
-PUT {{baseurl}}/Books(3)
+PUT {{baseurl}}/Books(5)
 Content-Type: application/json
 
 {
-      "title": "BookABCD24"
-      "author_ID": 3,
+      "title": "EnglishReader",
+      "author_ID": 5,
       "stock": 40
 }
 ###
@@ -40,4 +59,13 @@ Content-Type: application/json
 
 {
     "stock": 100
+}
+
+###
+POST {{baseurl}}/submitOrder
+Content-Type: application/json
+
+{
+      "book": 2,
+      "quantity": 0
 }
